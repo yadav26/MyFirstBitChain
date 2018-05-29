@@ -2,18 +2,12 @@
 //
 
 #include "stdafx.h"
-#include "Windows.h"
-#include <sstream>
-#include <algorithm>
-#include <iostream>
-#include <fstream>
-#include <iterator>
-#include "SHA256.h"
-#include <vector>
-#include <iomanip>
 
 
-using namespace std;
+#include "MerkelTree.h"
+
+
+
 
 typedef struct BitBlock 
 {
@@ -183,7 +177,7 @@ public:
 
 };
 
-typedef std::vector<string> STRING_COLLECTION;
+
 
 void ReadDataFile(const char* pFilename, STRING_COLLECTION* vec )
 {
@@ -240,8 +234,19 @@ int main( int argc, char** argv )
 	//pChain->PrintLatestFirst();
 
 
-	cout << "\n\n PROCESSED TRANSACTIONS - BitChain Length generated -: " << count;
+	cout << "\n\n**TEST-1 PROCESSED TRANSACTIONS - BitChain Length generated -: " << count;
 	cout << endl;
+
+
+	cout << "\n\n**TEST-2 Sample Merkel Tree Processing for MERKEL ROOT -: " ;
+
+	//Passing NULL means we dont have a collection of Transaction Hashes
+	STRING_COLLECTION vst;
+	
+	string stRoodHash = GetMerkelRootHash(vst);
+	
+	cout << "\nProcessed MERKEL ROOT -:: ";
+	cout << stRoodHash <<endl ;
 
     return 0;
 }
